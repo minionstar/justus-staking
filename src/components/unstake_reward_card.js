@@ -13,7 +13,7 @@ export default function UnstakedRewardCard(props) {
             <div className="py-5 text-xs py-0 flex flex-row items-center text-left">
               {text1}
               <TooltipComponent
-                content={"Unstake your Justus tokens at 4% tax"}
+                content={"UTax reduces by 4% monthly until month 24 onwards where it will be fixed at 4%. Starting tax for the first month is 96 %"}
               />
             </div>
             <p className="text-xl text-start">{balance}</p>
@@ -45,7 +45,7 @@ export default function UnstakedRewardCard(props) {
             <div className="py-5 text-xs py-0 flex flex-row items-center text-left">
               {text2}
               <TooltipComponent
-                content={"Claim your Justus token rewards and confirm the transaction in your wallet."}
+                content={"Claim your LP token rewards and confirm the transaction in your wallet."}
               />
             </div>
             <p className="text-xl text-start">{balance}</p>
