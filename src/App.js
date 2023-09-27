@@ -4,7 +4,7 @@ import { useState } from "react";
 import NativeStake from "./components/native_stake";
 import LPStake from "./components/lp_stake";
 
-export default function Home() {
+export default function App() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -16,7 +16,7 @@ export default function Home() {
             <p className="text-xl mb-5 font-semibold">Staking</p>
             <div className="flex flex-col md:flex-row  gap-3">
               <NativeStake />
-              <NativeStake />
+              <LPStake />
             </div>
           </div>
         ) : (

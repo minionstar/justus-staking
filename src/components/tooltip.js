@@ -14,7 +14,7 @@ export function TooltipComponent(props) {
         stroke="currentColor"
         fill="transparent"
         strokeWidth={2}
-        className="h-6 w-6 cursor-pointer text-blue-gray-500 inline-block"
+        className="h-5 w-5 cursor-pointer text-blue-gray-500 inline-block"
       >
         <path
           strokeLinecap="round"

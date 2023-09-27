@@ -4,6 +4,9 @@ import { TooltipComponent } from "./tooltip";
 import IconTotalStakedToken from "../assets/images/icons/total-token-staked.png"
 import StakedAmountCard from "./staked_amount_card";
 import IconBalanceJustusToken from "../assets/images/icons/token-balance.png"
+import UnstakedRewardCard from "./unstake_reward_card";
+import IconUnstakeToken from "../assets/images/icons//unstake-justus-token.png";
+import IconEarnedRewardToken from "../assets/images/icons/earned-justus-rewards.png"
 
 export default function NativeStake() {
   const [activeTab, setActiveTab] = useState(0);
@@ -41,7 +44,7 @@ export default function NativeStake() {
         <StakedAmountCard icon={IconTotalStakedToken} text={"Total Token Staked"} balance={0.0} />
         <StakedAmountCard icon={IconBalanceJustusToken} text={"Balance Justus Token"} balance={0.0} />
       </div>
-      <StakedAmountCard icon={IconTotalStakedToken} text={"Total Token Staked"} balance={0.0} />
+      <UnstakedRewardCard icon1={IconUnstakeToken} icon2={IconEarnedRewardToken} text1={"Unstake Justus Tokens"} text2={"Earned Justus Rewards"} balance={0.0} />
     </div>
   );
 }
