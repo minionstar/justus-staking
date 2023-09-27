@@ -19,16 +19,16 @@ export default function UnstakedRewardCard(props) {
             <p className="text-xl text-start">{balance}</p>
           </div>
         </div>
-        <div className="flex flex-row w-[100%]">
-          <div class="relative">
+        <div className="flex flex-row w-[100%] justify-between">
+          <div class="relative w-full">
             <input
               type="text"
-              class="block w-full p-4 pl-3 text-sm text-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block w-full p-3 pl-3 text-sm text-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="0.0"
               required
             />
             <span
-              className="absolute bottom-2.5 text-sm py-2 cursor-pointer text-blue-500 right-2.5"
+              className="absolute bottom-2.5 text-sm py-1 cursor-pointer text-blue-500 right-2.5"
             >
               Max
             </span>
