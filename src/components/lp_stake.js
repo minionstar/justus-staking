@@ -13,7 +13,7 @@ export default function LPStake() {
 
   return (
     <div className="native-stake w-[100%] md:w-[50%] text-sm">
-      <div className="bg-[#376eab] w-[100%] text-center p-8 mb-2 rounded-xl">
+      <div className="bg-[#376eab] w-[100%] text-center p-8 mb-2 rounded-xl font-semibold">
         LP Tokens
       </div>
       <div className="bg-[#376eab] w-[100%] p-5  rounded-xl mt-3">
