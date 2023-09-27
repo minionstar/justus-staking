@@ -3,6 +3,7 @@ import NavComponent from "./components/navbar";
 import { useState } from "react";
 import NativeStake from "./components/native_stake";
 import LPStake from "./components/lp_stake";
+import PartnerCard from "./components/partner_card";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(0);
@@ -20,7 +21,10 @@ export default function App() {
             </div>
           </div>
         ) : (
-          <div>Tab 2</div>
+          <div className="p-5">
+            <p className="text-xl mb-5 font-semibold">Partners</p>
+            <PartnerCard />
+          </div>
         )}
       </div>
     </main>
