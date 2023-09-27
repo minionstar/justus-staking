@@ -1,16 +1,19 @@
 import React from "@heroicons/react";
 import { useState } from "react";
 import { TooltipComponent } from "./tooltip";
+import IconTotalStakedToken from "../assets/images/icons/total-token-staked.png"
+import StakedAmountCard from "./staked_amount_card";
+import IconBalanceJustusToken from "../assets/images/icons/balance-justus-token.png"
 
 export default function NativeStake() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div className="native-stake w-[100%] md:w-[50%] mr-3 text-sm">
-      <div className="bg-[#22194780] w-[100%] text-center p-8 mb-2 rounded-xl">
+      <div className="bg-[#376eab] w-[100%] text-center p-8 mb-2 rounded-xl">
         Justus Tokens
       </div>
-      <div className="bg-[#22194780] w-[100%] p-5  rounded-xl mt-3">
+      <div className="bg-[#376eab] w-[100%] p-5  rounded-xl mt-3">
         <span className="mr-2">Stake Justus Token</span>
         <TooltipComponent
           content={
@@ -35,12 +38,8 @@ export default function NativeStake() {
         </div>
       </div>
       <div className="flex flex-row justify-between mt-3">
-        <div className="bg-[#22194780] w-[100%] text-center p-8 mb-5 rounded-xl mr-3">
-          Justus Tokens
-        </div>
-        <div className="bg-[#22194780] w-[100%] text-center p-8 mb-5 rounded-xl">
-          Justus Tokens
-        </div>
+        <StakedAmountCard icon={IconTotalStakedToken} text={"Total Token Staked"} balance={0.0} />
+        <StakedAmountCard icon={IconBalanceJustusToken} text={"Total Token Staked"} balance={0.0} />
       </div>
     </div>
   );
