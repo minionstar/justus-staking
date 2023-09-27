@@ -5,13 +5,14 @@ export function TooltipComponent(props) {
   return (
     <Tooltip
       placement="right"
-      className="bg-white px-4 py-3 text-black rounded-md w-[200px]"
+      className="bg-white px-4 py-3 text-[#376eab] rounded-md w-[200px]"
       content={content}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        fill="transparent"
         strokeWidth={2}
         className="h-6 w-6 cursor-pointer text-blue-gray-500 inline-block"
       >
