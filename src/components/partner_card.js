@@ -18,21 +18,21 @@ export default function PartnerCard(props) {
         <div className="flex flex-col w-full">
           <p className="font-medium mb-5  mt-5 sm:mt-0 ">TeraBlock</p>
           <div className="flex flex-row gap-2 mb-5 text-lg w-full">
-            <FaLinkedin />
+            <FaLinkedin className="cursor-pointer"/>
 
-            <FaSquareTwitter />
+            <FaSquareTwitter  className="cursor-pointer"/>
 
-            <FaGlobe />
+            <FaGlobe  className="cursor-pointer"/>
 
-            <FaMedium />
+            <FaMedium  className="cursor-pointer"/>
 
-            <FaTelegram />
+            <FaTelegram  className="cursor-pointer"/>
 
-            <FaYoutube />
+            <FaYoutube  className="cursor-pointer"/>
 
-            <FaDiscord />
+            <FaDiscord  className="cursor-pointer"/>
 
-            <FaReddit />
+            <FaReddit  className="cursor-pointer"/>
           </div>
           <div className="grid">
             <span className="line-clamp-3 break-words text-sm">
