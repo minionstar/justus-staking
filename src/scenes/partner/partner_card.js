@@ -18,10 +18,10 @@ export default function PartnerCard(props) {
   return (
     <div className="bg-[#376eab] rounded-xl ">
       <div className="flex flex-col sm:flex-row items-center sm:items-start p-5 w-full">
-        <div className="relative sm:mr-3">
+        <div className="relative sm:mr-3 w-48">
           <img
             src={TeraImage}
-            className="w-48"
+            className="w-full"
             onLoad={() => setLoaded({ loaded: true })}
           />
           {!loaded && (
