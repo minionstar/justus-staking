@@ -8,11 +8,13 @@ import { FaTelegram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa6";
 import { FaReddit } from "react-icons/fa6";
+import Icon from "react-crypto-icons";
 
 export default function PartnerCard(props) {
-  const { image, name, socials, description, invPrice, invAmount } = props;
+  const { image, name, socials, description, invPrice, invAmount, setShowModal } = props;
   const [loaded, setLoaded] = useState(false);
-  console.log(loaded);
+
+  
   return (
     <div className="bg-[#376eab] rounded-xl ">
       <div className="flex flex-col sm:flex-row items-center sm:items-start p-5 w-full">
@@ -29,7 +31,11 @@ export default function PartnerCard(props) {
           )}
         </div>
         <div className="flex flex-col w-full">
-          <p className="font-medium mb-5  mt-5 sm:mt-0 ">TeraBlock</p>
+          <div className="flex flex-row justify-between">
+            <p className="font-medium mb-5  mt-5 sm:mt-0 ">TeraBlock</p>
+            <Icon name="bnb" size={25} />
+          </div>
+
           <div className="flex flex-row gap-2 mb-5 text-lg w-full">
             <FaLinkedin className="cursor-pointer" />
 
@@ -52,7 +58,10 @@ export default function PartnerCard(props) {
               DescriptionDescriptionDescriptionDescriptionDescriptionDescripDescriptionDescriptionDescriptionDescriptionDescriptionDescripDescriDescriptionDescriptionDescriptionDescriptionDescriptionDescripDescriptionDescriptionDescriptionDescriptionDescriptionDescripDescri
             </span>
             <div className="flex justify-end">
-              <span className="text-blue-300 cursor-pointer inline-block">
+              <span
+                className="text-blue-300 cursor-pointer inline-block"
+                onClick={() => setShowModal(true)}
+              >
                 Read More
               </span>
             </div>
