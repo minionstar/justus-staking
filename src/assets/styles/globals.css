@@ -22,6 +22,10 @@ body {
   background: #070707;
 }
 
+.wallet-connect-btn {
+  background-color: #0b488d !important
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

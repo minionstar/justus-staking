@@ -1,6 +1,6 @@
 import React from "@heroicons/react";
 import { useState } from "react";
-import IconTotalStakedToken from "../assets/images/icons/total-token-staked.png";
+import IconTotalStakedToken from "../../assets/images/icons/total-token-staked.png";
 
 export default function StakedAmountCard(props) {
 const {icon, text, balance} =  props;

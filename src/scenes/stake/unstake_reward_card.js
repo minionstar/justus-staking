@@ -1,6 +1,6 @@
 import React from "@heroicons/react";
 import { useState } from "react";
-import { TooltipComponent } from "./tooltip";
+import { TooltipComponent } from "../../components/tooltip";
 
 export default function UnstakedRewardCard(props) {
   const { icon1, icon2, text1, text2, balance } = props;
@@ -10,10 +10,10 @@ export default function UnstakedRewardCard(props) {
         <div className="flex flex-row items-center w-[100%] text-center">
           <img src={icon1} className="h-10 w-10" />
           <div className="pt-1 ml-2">
-            <div className="py-5 text-xs py-0 flex flex-row items-center text-left">
+            <div className="text-xs py-0 flex flex-row items-center text-left gap-1">
               {text1}
               <TooltipComponent
-                content={"UTax reduces by 4% monthly until month 24 onwards where it will be fixed at 4%. Starting tax for the first month is 96 %"}
+                content={"Tax reduces by 4% monthly until month 24 onwards where it will be fixed at 4%. Starting tax for the first month is 96 %"}
               />
             </div>
             <p className="text-xl text-start">{balance}</p>
@@ -42,7 +42,7 @@ export default function UnstakedRewardCard(props) {
         <div className="flex flex-row items-center w-[100%] text-center">
           <img src={icon2} className="h-10 w-10" />
           <div className="pt-1 ml-2">
-            <div className="py-5 text-xs py-0 flex flex-row items-center text-left">
+            <div className="text-xs py-0 flex flex-row items-center text-left gap-1">
               {text2}
               <TooltipComponent
                 content={"Claim your LP token rewards and confirm the transaction in your wallet."}
