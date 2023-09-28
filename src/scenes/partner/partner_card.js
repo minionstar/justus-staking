@@ -15,15 +15,19 @@ export default function PartnerCard(props) {
   console.log(loaded);
   return (
     <div className="bg-[#376eab] rounded-xl ">
-      <div className="flex flex-col sm:flex-row items-cetner sm:items-start p-5 w-full">
-        <img
-          src={TeraImage}
-          className="sm:mr-5"
-          onLoad={() => setLoaded({ loaded: true })}
-        />
-        {!loaded && (
-          <div>loading</div>
-        )}
+      <div className="flex flex-col sm:flex-row items-center sm:items-start p-5 w-full">
+        <div className="relative sm:mr-3">
+          <img
+            src={TeraImage}
+            className="w-48"
+            onLoad={() => setLoaded({ loaded: true })}
+          />
+          {!loaded && (
+            <div className="h-full w-full image-thumbnail border-2 rounded-lg border-white absolute bg-gray-700 animate-pulse top-0 flex items-center justify-center">
+              TeraBlock
+            </div>
+          )}
+        </div>
         <div className="flex flex-col w-full">
           <p className="font-medium mb-5  mt-5 sm:mt-0 ">TeraBlock</p>
           <div className="flex flex-row gap-2 mb-5 text-lg w-full">
