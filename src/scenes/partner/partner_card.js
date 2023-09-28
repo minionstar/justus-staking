@@ -11,10 +11,17 @@ import { FaReddit } from "react-icons/fa6";
 import Icon from "react-crypto-icons";
 
 export default function PartnerCard(props) {
-  const { image, name, socials, description, invPrice, invAmount, setShowModal } = props;
+  const {
+    image,
+    name,
+    socials,
+    description,
+    invPrice,
+    invAmount,
+    setShowModal,
+  } = props;
   const [loaded, setLoaded] = useState(false);
 
-  
   return (
     <div className="bg-[#376eab] rounded-xl ">
       <div className="flex flex-col sm:flex-row items-center sm:items-start p-5 w-full">
@@ -26,9 +33,7 @@ export default function PartnerCard(props) {
           />
           {!loaded && (
             <div className="h-0 pb-[100%] w-full image-thumbnail border-2 rounded-lg border-white bg-gray-700 animate-pulse flex items-center justify-center absolute top-0">
-              <div className="absolute h-full w-full relative">
-              <span className="absolute pt-[100%]">TeraBlock</span>
-              </div>
+                <span className="pt-[100%]">TeraBlock</span>
             </div>
           )}
         </div>
