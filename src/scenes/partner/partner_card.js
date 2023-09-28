@@ -32,7 +32,7 @@ export default function PartnerCard(props) {
             onLoad={() => setLoaded({ loaded: true })}
           />
           {!loaded && (
-            <div className="h-0 pb-[100%] w-full image-thumbnail border-2 rounded-lg border-white bg-gray-700 animate-pulse flex items-center justify-center absolute top-0">
+            <div className="h-0 pb-[100%] w-full image-thumbnail rounded-lg bg-gray-700 animate-pulse flex items-center justify-center absolute top-0">
                 <span className="pt-[100%]">TeraBlock</span>
             </div>
           )}
