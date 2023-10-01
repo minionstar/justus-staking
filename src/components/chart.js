@@ -1,29 +1,42 @@
-import React, { useState } from 'react';
-import ReactApexChart from 'react-apexcharts';
+import React, { useState } from "react";
+import ReactApexChart from "react-apexcharts";
 
 const options = {
-  legend: {  // chart
+  legend: {
+    // chart
     show: false,
-    position: 'top',
-    horizontalAlign: 'left',
+    position: "top",
+    horizontalAlign: "left",
   },
-  colors: ['#FFFFFF'],   //chart line color
+  colors: ["#FFFFFF"], //chart line color
   chart: {
-    type: 'line',
+    type: "line",
     dropShadow: {
       enabled: true,
-      color: '#623CEA14',
+      color: "#623CEA14",
       top: 10,
       blur: 4,
       left: 0,
       opacity: 0.1,
     },
-    foreColor : '#FFF',  // Axis font color
-    toolbar: {
-      show: true,
-      
+    foreColor: "#FFF", // Axis font color
+    redrawOnParentResize: true,
+    zoom: {
+      enabled: true,
+      type: "x",
+      autoScaleYaxis: false,
+      zoomedArea: {
+        fill: {
+          color: "#90CAF9",
+          opacity: 0.4,
+        },
+        stroke: {
+          color: "#0D47A1",
+          opacity: 0.4,
+          width: 1,
+        },
+      },
     },
-    redrawOnParentResize: true
   },
   responsive: [
     {
@@ -36,32 +49,14 @@ const options = {
     },
   ],
   stroke: {
-    width: [2, 2],
-    curve: 'smooth',
+    width: [1, 1],
+    curve: "smooth",
   },
-  // labels: {
-  //   show: false,
-  //   position: "top",
-  // },
-  grid: {
-    xaxis: {
-      lines: {
-        show: true,
-      },
-    },
-    yaxis: {
-      lines: {
-        show: true,
-      },
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
+ 
   markers: {
-    size: 4,
-    colors: '#fff',
-    strokeColors: ['#3056D3', '#80CAEE'],
+    size: 6,
+    colors: "#FFF",
+    strokeColors: ["#3056D3"],
     strokeWidth: 3,
     strokeOpacity: 0.9,
     strokeDashArray: 0,
@@ -73,51 +68,145 @@ const options = {
     },
   },
   xaxis: {
-    type: 'category',
+    type: "category",
     categories: [
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
     ],
     axisBorder: {
-      show: false,
+      show: true,
     },
     axisTicks: {
-      show: false,
+      show: true,
     },
+		labels: {
+			rotate: -45
+		}
   },
   yaxis: {
     title: {
       style: {
-        fontSize: '0px',
+        fontSize: "0px",
       },
     },
     min: 0,
     max: 100,
   },
+  noData: {
+    text: "No Data",
+    align: "center",
+    verticalAlign: "middle",
+    offsetX: 0,
+    offsetY: 0,
+    style: {
+      color: undefined,
+      fontSize: "20px",
+      fontFamily: undefined,
+    },
+  },
+  tooltip: {
+    enabled: true,
+    enabledOnSeries: true,
+    shared: false,
+    followCursor: true,
+    intersect: true,
+    inverseOrder: false,
+    custom: function({series, seriesIndex, dataPointIndex, w}) {
+			return '<div class="arrow_box bg-primary p-3">' +
+				'<span className="text-gray-900 bg-blue-900">' + "Price "+series[seriesIndex][dataPointIndex] + '</span>' +
+				'</div>'
+		},
+    fillSeriesColor: "white",
+    theme: false,
+    style: {
+      fontSize: "12px",
+      fontFamily: undefined,
+    },
+    onDatasetHover: {
+      highlightDataSeries: false,
+    },
+    x: {
+      show: true,
+      format: "dd MMM",
+      formatter: undefined,
+    },
+    y: {
+      formatter: undefined,
+      title: {
+        formatter: (seriesName) => seriesName,
+      },
+    },
+    z: {
+      formatter: undefined,
+      title: "Size: ",
+    },
+    marker: {
+      show: true,
+    },
+    items: {
+      display: "flex",
+    },
+    fixed: {
+      enabled: false,
+      position: "topRight",
+      offsetX: 0,
+      offsetY: 0,
+    },
+  },
+	grid: {
+    show: true,
+    borderColor: '#90A4AE',
+    strokeDashArray: 1,
+    position: 'back',
+    xaxis: {
+        lines: {
+            show: true
+        }
+    },   
+    yaxis: {
+        lines: {
+            show: true
+        }
+    },  
+    row: {
+        colors: undefined,
+        opacity: 0.2
+    },  
+    column: {
+        colors: undefined,
+        opacity: 0.2
+    },  
+    padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+    },  
+}
 };
 
-export default function ChartComponent(){
+export default function ChartComponent() {
   const [chartData, setChartData] = useState({
     series: [
       {
-        name: 'Product One',
+        name: "Product One",
         data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
       },
     ],
   });
 
   return (
-    <div className="col-span-12 rounded-lg px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8 h-full bg-[#231a4f]">
+    <div className="col-span-12 rounded-lg px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8 h-full bg-[#231a4f] mb-5">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
           <div className="flex min-w-47.5">
@@ -166,5 +255,4 @@ export default function ChartComponent(){
       </div>
     </div>
   );
-};
-
+}
