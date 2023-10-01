@@ -41,7 +41,7 @@ export default function NativeStake() {
         </div>
       </div>
       <div className="flex flex-row mt-3 gap-3">
-        <StakedAmountCard icon={IconTotalStakedToken} text={"Total Token Staked"} balance={0.0} />
+        <StakedAmountCard icon={IconTotalStakedToken} text={"Total Token Staked"} balance={0.0}/>
         <StakedAmountCard icon={IconBalanceJustusToken} text={"Balance Justus Token"} balance={0.0} />
       </div>
       <UnstakedRewardCard icon1={IconUnstakeToken} icon2={IconEarnedRewardToken} text1={"Unstake Justus Tokens"} text2={"Earned Justus Rewards"} balance={0.0} />

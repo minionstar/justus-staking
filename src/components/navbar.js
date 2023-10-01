@@ -6,8 +6,10 @@ import "../assets/styles/Home.css";
 import logo from "../assets/images/logo1.png";
 
 const navigation = [
-  { name: "Stake", tabIndex: 0 },
-  { name: "Partner", tabIndex: 1 },
+  { name: "Dashboard", tabIndex: 0 },
+  { name: "Staking", tabIndex: 1 },
+  { name: "Partners", tabIndex: 2 },
+  
 ];
 
 function classNames(...classes) {
