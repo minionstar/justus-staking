@@ -1,11 +1,11 @@
 import { Tooltip, Typography } from "@material-tailwind/react";
- 
+
 export function TooltipComponent(props) {
-    const {content} = props;
+  const { content } = props;
   return (
     <Tooltip
       placement="right"
-      className="bg-white px-4 py-3 text-[#376eab] rounded-md w-[200px]"
+      className="bg-whiten px-4 py-3 text-[#376eab] rounded-md w-[200px]"
       content={content}
     >
       <svg

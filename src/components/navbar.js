@@ -1,15 +1,13 @@
-import { Fragment } from "react";
-import { ConnectWallet } from "@thirdweb-dev/react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import "../assets/styles/Home.css";
 import logo from "../assets/images/logo1.png";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const navigation = [
   { name: "Dashboard", tabIndex: 0 },
   { name: "Staking", tabIndex: 1 },
   { name: "Partners", tabIndex: 2 },
-  
 ];
 
 function classNames(...classes) {
@@ -18,6 +16,7 @@ function classNames(...classes) {
 
 export default function NavComponent(props) {
   const { setActiveTab, activeTab } = props;
+
   return (
     <Disclosure as="nav" className="bg-[#231a4f]">
       {({ open }) => (
@@ -47,7 +46,7 @@ export default function NavComponent(props) {
                         key={item.name}
                         className={classNames(
                           item.tabIndex == activeTab
-                            ? "bg-blue-500 text-white"
+                            ? "bg-primary text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "rounded-md px-3 py-1 text-sm font-medium"
                         )}
@@ -59,14 +58,11 @@ export default function NavComponent(props) {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <ConnectWallet
-                  theme="light"
-                  dropdownPosition={{
-                    side: "bottom",
-                    align: "center",
-                  }}
-                  className="wallet-connect-btn"
+              <div>
+                <ConnectButton
+                  accountStatus="address"
+                  chainStatus="name"
+                  showBalance={true}
                 />
               </div>
             </div>
@@ -79,7 +75,7 @@ export default function NavComponent(props) {
                   key={item.name}
                   className={classNames(
                     item.tabIndex == activeTab
-                      ? "bg-blue-500 text-white"
+                      ? "bg-primary text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}

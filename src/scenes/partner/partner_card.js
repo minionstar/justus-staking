@@ -8,7 +8,6 @@ import { FaTelegram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa6";
 import { FaReddit } from "react-icons/fa6";
-import Icon from "react-crypto-icons";
 
 export default function PartnerCard(props) {
   const {
@@ -32,15 +31,14 @@ export default function PartnerCard(props) {
             onLoad={() => setLoaded({ loaded: true })}
           />
           {!loaded && (
-            <div className="h-0 pb-[100%] w-full image-thumbnail rounded-lg bg-gray-700 animate-pulse flex items-center justify-center absolute top-0">
-                <span className="pt-[100%]">TeraBlock</span>
+            <div className="h-0 pb-[100%] w-full image-thumbnail rounded-lg bg-gray animate-pulse flex items-center justify-center absolute top-0">
+              <span className="pt-[100%]">TeraBlock</span>
             </div>
           )}
         </div>
         <div className="flex flex-col w-full">
           <div className="flex flex-row justify-between">
             <p className="font-medium mb-5  mt-5 sm:mt-0 ">TeraBlock</p>
-            <Icon name="bnb" size={25} />
           </div>
 
           <div className="flex flex-row gap-2 mb-5 text-lg w-full">

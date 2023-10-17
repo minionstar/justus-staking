@@ -1,8 +1,6 @@
-import React from "@heroicons/react";
-import { useState } from "react";
+import React from "react";
 import NativeStake from "./native_stake";
 import LPStake from "./lp_stake";
-
 
 export default function StakeComponent(props) {
   return (
