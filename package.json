@@ -27,7 +27,6 @@
     "https": "npm:https-browserify",
     "https-browserify": "latest",
     "mini-svg-data-uri": "^1.4.4",
-    "moralis": "^2.23.1",
     "react": "^18.2",
     "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
@@ -41,6 +40,7 @@
     "viem": "^1.16.1",
     "wagmi": "^1.4.3",
     "web-vitals": "^3.1.0",
+    "yarn": "^1.22.19",
     "zlib": "npm:browserify-zlib"
   },
   "scripts": {
@@ -59,6 +59,13 @@
   "browserslist": {
     "production": [
       ">0.2%",
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14",
+      "not ie <= 99",
+      "not android <= 4.4.4",
       "not dead",
       "not op_mini all"
     ],

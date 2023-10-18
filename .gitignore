@@ -2,3 +2,5 @@ node_modules
 yarn.lock
 LICENSE.md
 .env
+package-lock.json
+build
