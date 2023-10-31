@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function ChartComponent() {
   const [prices, setPrices] = useState([]);
-  const [period, setPeriod] = useState(1);
+  // const [period, setPeriod] = useState(1);
   const [dates, setDates] = useState([]);
   const [chartData, setChartData] = useState({
     series: [
@@ -17,14 +17,13 @@ export default function ChartComponent() {
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/justus/market_chart?vs_currency=usd&days=${period}` //eg. 1,14,30,max => 1 day, 2 weeks, 1 month, all
+        `https://api.coingecko.com/api/v3/coins/justus/market_chart?vs_currency=usd&days=1` //eg. 1,14,30,max => 1 day, 2 weeks, 1 month, all
       )
       .then((response) => {
-        console.log(response);
         let data = [];
         let dates = [];
         response?.data?.prices.map((price, index) => {
-          if (index % 6 == 0) {
+          if (index % 6 === 0) {
             data.push(price[1].toFixed(5));
             dates.push(
               new Date(price[0]).getMonth() +
@@ -36,6 +35,7 @@ export default function ChartComponent() {
                 "H"
             );
           }
+          return response;
         });
         setPrices(data);
         setDates(dates);
@@ -48,7 +48,7 @@ export default function ChartComponent() {
           ],
         });
       });
-  }, [period]);
+  }, []);
 
   const options = {
     legend: {
@@ -103,10 +103,10 @@ export default function ChartComponent() {
     },
 
     markers: {
-      size: 6,
+      size: 3,
       colors: "#FFF",
       strokeColors: ["#3056D3"],
-      strokeWidth: 3,
+      strokeWidth: 2,
       strokeOpacity: 0.9,
       strokeDashArray: 0,
       fillOpacity: 1,
@@ -212,7 +212,7 @@ export default function ChartComponent() {
     <div className="col-span-12 rounded-lg px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8 h-full bg-[#231a4f] mb-5">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
-          <div className="flex min-w-47.5">
+          {/* <div className="flex min-w-47.5">
             <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
             </span>
@@ -229,10 +229,10 @@ export default function ChartComponent() {
               <p className="font-semibold text-secondary">Total Sales</p>
               <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="flex w-full max-w-45 justify-end">
-          <div className="inline-flex items-center rounded-md bg-transparent p-1.5 dark:bg-meta-4">
+          {/* <div className="inline-flex items-center rounded-md bg-transparent p-1.5 dark:bg-meta-4">
             <button className="rounded bg-whiten py-1 px-3 text-xs font-medium text-boxdark shadow-card hover:bg-whiten hover:shadow-card ">
               Day
             </button>
@@ -242,7 +242,7 @@ export default function ChartComponent() {
             <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card">
               Month
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

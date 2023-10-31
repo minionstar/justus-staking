@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { TooltipComponent } from "../../components/tooltip";
+import React, { useState } from "react";
 import IconTotalStakedToken from "../../assets/images/icons/total-token-staked.png";
 import StakedAmountCard from "./staked_amount_card";
 import IconBalanceJustusToken from "../../assets/images/icons/token-balance.png";
@@ -10,7 +9,7 @@ import {
   getFormatedBalance,
   getETHBalance,
 } from "../../utils";
-import { USDT_DECIMAL, Justus_DECIMAL } from "../../constants/decimal";
+import { JTT_DECIMAL } from "../../constants/decimal";
 import {
   LPStakingContractAddr,
   LPTokenAddr,
@@ -26,7 +25,7 @@ import {
 import SweetAlert2 from "react-sweetalert2";
 
 export default function LPStake(props) {
-  const { address, isConnecting, isDisconnected } = useAccount();
+  const { address } = useAccount();
   const [amountToStake, setAmountToStake] = useState();
   const [unstakeAmount, setUnStakeAmount] = useState();
   const [isErr, setIsError] = useState(false);
@@ -37,6 +36,7 @@ export default function LPStake(props) {
       address: LPStakingContractAddr,
       abi: StakingContractABI,
       functionName: "totalSupply",
+      watch: true,
     });
 
   const { data: lpBalance, isLoadingUserBalance } = useContractRead({
@@ -45,6 +45,7 @@ export default function LPStake(props) {
     abi: tokenABI,
     functionName: "balanceOf",
     args: [address],
+    watch: true,
   });
 
   const { data: userStakedBalance, isLoading: isLoadingUserStakedBalance } =
@@ -54,6 +55,7 @@ export default function LPStake(props) {
       abi: StakingContractABI,
       functionName: "balanceOf",
       args: [address],
+      watch: true,
     });
 
   /* approve Justus token to stake */
@@ -64,13 +66,12 @@ export default function LPStake(props) {
     args: [LPStakingContractAddr, getFormatedBalance(amountToStake)],
   });
 
-  const { isLoading: isApproving, isSuccess: isApproveSuccess } =
-    useWaitForTransaction({
-      hash: approveDate?.hash,
-      onSuccess() {
-        stakeToken();
-      },
-    });
+  const { isLoading: isApproving } = useWaitForTransaction({
+    hash: approveDate?.hash,
+    onSuccess() {
+      stakeToken();
+    },
+  });
 
   /* stake */
   const { data: stakeData, write: stakeToken } = useContractWrite({
@@ -124,21 +125,27 @@ export default function LPStake(props) {
   return (
     <div className="native-stake w-[100%] md:w-[50%] text-sm">
       <div className="bg-[#376eab] w-[100%] text-center p-8 mb-2 rounded-xl font-semibold">
-        Justus Tokens
+        LP STAKE
       </div>
       <div className="bg-[#376eab] w-[100%] p-5  rounded-xl mt-3">
-        <span className="mr-2 text-xs">Stake Justus Token</span>
-        <TooltipComponent
-          content={
-            "Select the amount of tokens you would like to stake. Hit “Approve” and then “Stake” and confirm both transactions in your wallet.le"
-          }
-        />
-        <span
-          className="ml-2 cursor-pointer"
-          onClick={() => setAmountToStake(getETHBalance(lpBalance))}
-        >
-          Max
-        </span>
+        <div className="flex flex-row justify-between">
+          <div>
+            <span className="mr-2 text-xs">Stake LP</span>
+            <span
+              className="ml-2 cursor-pointer"
+              onClick={() => setAmountToStake(getETHBalance(lpBalance))}
+            >
+              Max
+            </span>
+          </div>
+          <a
+            className="ml-2 cursor-pointer right"
+            href="https://pancakeswap.finance/v2/add/BNB/0xcdB3D3642FB4d48D2B5E4fb4a014448A2761C063"
+            target="blank"
+          >
+            Add-LP
+          </a>
+        </div>
         <div className="flex flex-row justify-between mt-3">
           <input
             type="number"
@@ -163,6 +170,9 @@ export default function LPStake(props) {
           icon={IconTotalStakedToken}
           text={"Total Staked LP"}
           balance={totalStakedBalance}
+          isCurrency={false}
+          isJtt={false}
+          isLP={true}
         />
         <StakedAmountCard
           loading={isLoadingUserBalance}
@@ -172,28 +182,28 @@ export default function LPStake(props) {
         />
       </div>
       <div className="bg-[#376eab]  p-5 mb-5 rounded-xl">
-        <div className="flex flex-row items-center  w-[100%] text-center mb-3">
-          <div className="flex flex-row items-center w-[100%] text-center">
-            <img src={IconUnstakeToken} className="h-10 w-10" />
+        <div className="flex flex-col sm:flex-row items-center  w-[100%] text-center mb-3 ">
+          <div className="flex flex-row items-center w-[100%] text-center ">
+            <img src={IconUnstakeToken} className="h-10 w-10" alt="Justus" />
             <div className="pt-1 ml-2">
               <div className="text-xs py-0 flex flex-row items-center text-left gap-1">
                 {"Your Staking Balance"}
-                <TooltipComponent
+                {/* <TooltipComponent
                   content={
                     "Tax reduces by 4% monthly until month 24 onwards where it will be fixed at 4%. Starting tax for the first month is 96 %"
                   }
-                />
+                /> */}
               </div>
               {isLoadingUserStakedBalance ? (
                 <div className="h-6 w-12 image-thumbnail rounded-sm bg-secondary animate-pulse flex items-center justify-center"></div>
               ) : (
                 <p className="text-lg text-start">
-                  {showTokenBalance(userStakedBalance, Justus_DECIMAL)}
+                  {showTokenBalance(userStakedBalance, JTT_DECIMAL)}
                 </p>
               )}
             </div>
           </div>
-          <div className="flex flex-row w-[100%] justify-between">
+          <div className="flex flex-row w-[100%] justify-between mt-3 sm:mt-1">
             <div className="relative w-full">
               <input
                 type="number"
@@ -207,7 +217,7 @@ export default function LPStake(props) {
                 className="absolute bottom-2.5 text-sm py-1 cursor-pointer text-blue-500 right-8"
                 onClick={() =>
                   setUnStakeAmount(
-                    getETHBalance(userStakedBalance, Justus_DECIMAL)
+                    getETHBalance(userStakedBalance, JTT_DECIMAL)
                   )
                 }
               >
@@ -236,6 +246,7 @@ export default function LPStake(props) {
             account={address}
             rewardTokenAddr={rewardTokenAddr}
             StakingContractAddr={LPStakingContractAddr}
+            index={index}
           />
         ))}
       </div>

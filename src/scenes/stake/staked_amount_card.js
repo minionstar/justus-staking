@@ -1,34 +1,43 @@
 import React from "@heroicons/react";
 import { showTokenBalance } from "../../utils";
-import { Justus_DECIMAL } from "../../constants/decimal";
-import { Spinner } from "@material-tailwind/react";
+import { JTT_DECIMAL } from "../../constants/decimal";
 export default function StakedAmountCard(props) {
   const {
     icon,
     text,
-    balance,
+    balance = 0,
     classNames,
     loading,
     isFormated = false,
     isCurrency = true,
+    isJtt = false,
+    isLP = false,
+    isPrice = false,
   } = props;
   return (
     <div
       className={
-        "flex flex-col items-center bg-[#376eab] w-[100%] text-center p-8 mb-5 rounded-xl " +
+        "flex flex-col items-center bg-[#376eab] w-[100%] text-center p-8 mb-3 rounded-xl " +
         classNames
       }
     >
-      <img src={icon} className={"h-10 w-10"} />
+      <img src={icon} className={"h-10 w-10"} alt="icon" />
       <p className="py-5 text-xs">{text}</p>
 
-      {loading || balance == 0 ? (
+      {loading ? (
         <div className="h-6 w-12 image-thumbnail rounded-sm bg-secondary animate-pulse flex items-center justify-center"></div>
       ) : (
         <p className="text-lg">
           {isCurrency
-            ? "$ " + showTokenBalance(balance, Justus_DECIMAL, isFormated)
-            : showTokenBalance(balance, Justus_DECIMAL, isFormated) + " %"}
+            ? isJtt
+              ? showTokenBalance(balance, JTT_DECIMAL, isFormated) + " JTT"
+              : "$ " +
+                (isPrice
+                  ? balance
+                  : showTokenBalance(balance, JTT_DECIMAL, isFormated))
+            : isLP
+            ? showTokenBalance(balance, JTT_DECIMAL, isFormated) + " JTT/BNB"
+            : showTokenBalance(balance, JTT_DECIMAL, isFormated) + " %"}
         </p>
       )}
     </div>

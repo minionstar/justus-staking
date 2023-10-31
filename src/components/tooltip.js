@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react";
 
 export function TooltipComponent(props) {
   const { content } = props;

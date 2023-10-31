@@ -9,16 +9,16 @@ import Dashboard from "./scenes/dashboard/dashboard";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { polygonMumbai, bsc } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
-import { jsonRpcProvider } from "@wagmi/core/providers/jsonRpc";
 import { Buffer } from "buffer";
+
 window.Buffer = window.Buffer || Buffer;
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [polygonMumbai, bsc],
+  [polygonMumbai],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Justus Stake",
+  appName: "JTT Stake",
   projectId: "JS",
   chains,
 });
@@ -39,9 +39,9 @@ export default function App() {
         <main className="main">
           <NavComponent setActiveTab={setActiveTab} activeTab={activeTab} />
           <div className="content h-[100%]">
-            {activeTab == 0 ? (
+            {activeTab === 0 ? (
               <Dashboard />
-            ) : activeTab == 1 ? (
+            ) : activeTab === 1 ? (
               <StakeComponent />
             ) : (
               <PartnerComponent />
@@ -52,3 +52,5 @@ export default function App() {
     </WagmiConfig>
   );
 }
+
+// set chain from polygon to bsc
